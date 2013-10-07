@@ -1,0 +1,125 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="row-fluid">
+    <div class=" col-lg-8">
+        {% if flash.error != '' %}
+            <div class="alert alert-warning">{{ flash.error | raw}}</div>
+        {% endif %}
+        {% if flash.info!= '' %}
+            <div class="alert alert-success">{{ flash.info | raw }}</div>
+        {% endif %}
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Latest Draws</div>
+          <div class="panel-body">
+                <div id="draws-grid" class="backgrid-container"></div>
+          </div>
+        </div>
+    </div>
+    <div class=" col-lg-4">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Live Draw</div>
+          <div class="panel-body" id="live-draw">
+              <ul id="pingpong"></ul>
+              <script>
+                    var left = '{{left}}';
+                    var time = '{{time}}';
+                    if(time >= '2100' && time <= '2200'){
+                        
+                        jQuery.ajax({
+                            type: 'GET',
+                            url: '/live-draw',
+                            complete:function(data){
+                                if(data != ''){
+                                    for(var i=0;i<data.length;i++){
+                                        jQuery('#pingpong').append('<li>'+data[i]+'</li>');
+                                    }
+                                }
+                            }
+                        })
+                        
+                    }else{  
+                        var myCountdown2 = new Countdown({
+                            time: {{ left }}, 
+                            width:200, 
+                            height:80, 
+                            rangeHi:"hour"	// <- no comma on last item!
+                        });    
+                    }
+              </script>
+          </div>
+        </div>
+    </div>
+</div>
+    <script type="text/javascript">
+    var columns = [{
+      name: "id", // The key of the model attribute
+      label: "ID", // The name to display in the header
+      editable: false,
+      cell: Backgrid.IntegerCell.extend({
+        orderSeparator: ''
+      })
+    }, {
+      name: "numbers",
+      label: "Numbers",
+      editable: false,
+      cell: "string" 
+    }, {
+      name: "winning_price",
+      label: "Winning Price ($)",
+      editable: false,
+      cell: "string" 
+    }, {
+      name: "date",
+      label: "Draw Date",
+      editable: false,
+      cell: "string"
+    }];
+    var Draws = Backbone.Model.extend({});
+    var PageableDraws = Backbone.PageableCollection.extend({
+      model: Draws,
+      url: "/managers/draws/request/latest",
+      state: {
+        pageSize: 15
+      },
+      mode: "client",
+    });
+    
+    var pageableDraws = new PageableDraws();
+    
+    // Set up a grid to use the pageable collection
+    var pageableGrid = new Backgrid.Grid({
+      columns: columns,
+      collection: pageableDraws
+    });
+    
+    // Render the grid
+    var $example2 = $("#draws-grid");
+    $example2.append(pageableGrid.render().$el)
+    
+    // Initialize the paginator
+    var paginator = new Backgrid.Extension.Paginator({
+      collection: pageableDraws
+    });
+    
+    // Render the paginator
+    $example2.append(paginator.render().$el);
+    
+    // Initialize a client-side filter to filter on the client
+    // mode pageable collection's cache.
+    var filter = new Backgrid.Extension.ClientSideFilter({
+      collection: pageableDraws.fullCollection,
+      fields: ['date','status']
+    });
+    
+    // Render the filter
+    $example2.prepend(filter.render().$el);
+    
+    // Add some space to the filter and move it to the right
+    filter.$el.css({float: "right", margin: "20px"});
+    
+    // Fetch some data
+    pageableDraws.fetch({reset: true});
+    </script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "master.html" %}
+{% block content %}
+<div class="row-fluid">
+    <div class=" col-lg-8">
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">Print Ticket</div>
+          <div class="panel-body">
+                <div id="betting-form-container">
+                     <table class="table table-striped table-hover table-striped" id="ticket">
+                     <table class="table table-striped table-hover table-striped" id="ticket">
+                            <tr>
+                                <td><strong>Draw ID:</strong></td>
+                                <td>{{ ticket.draw_id }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ticket Number:</strong></td>
+                                <td>{{ ticket.ticket_number }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Security Code:</strong></td>
+                                <td>{{ ticket.security_code }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Numbers:</strong></td>
+                                <td>{{ ticket.numbers }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lucky Pick:</strong></td>
+                                <td>
+                                    {% if ticket.lucky_pick == 1 %}
+                                        Yes
+                                    {% else %}
+                                        No
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>Draw Date:</strong></td>
+                                <td>{{ ticket.created_at | date('F j,Y') }}</td>
+                            </tr>
+                     </table>
+                     </table>
+                     <div style="text-align: center;">
+                            <script type="text/javascript">
+                                jQuery(document).ready(function(){
+                                    jQuery('#print-ticket').click(function(){
+                                        window.print();
+                                    });
+                                });
+                            </script>
+                            <button class="btn btn-block btn-primary" id="print-ticket"><i class="glyphicon glyphicon-print"></i> Print Ticket</button>
+                     </div>   
+                    <div style="clear: both;"></div>
+                </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+Skin: dhx_skyblue
+
+======== JS CODE =========
+./dhtmlxcommon.js
+../dhtmlxDataProcessor/codebase/dhtmlxdataprocessor.js
+../dhtmlxGrid/codebase/dhtmlxgrid.js
+../dhtmlxGrid/codebase/dhtmlxgridcell.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_filter.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_drag.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_nxml.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_selection.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_srnd.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_start.js
+../dhtmlxGrid/codebase/ext/dhtmlxgrid_validation.js
+../dhtmlxGrid/codebase/excells/dhtmlxgrid_excell_dhxcalendar.js
+../dhtmlxGrid/codebase/excells/dhtmlxgrid_excell_cntr.js
+../dhtmlxGrid/codebase/excells/dhtmlxgrid_excell_link.js
+../dhtmlxCalendar/codebase/dhtmlxcalendar.js
+../dhtmlxCombo/codebase/dhtmlxcombo.js
+../dhtmlxDataStore/codebase/datastore.js
+
+======== CSS CODE ========
+../dhtmlxGrid/codebase/dhtmlxgrid.css
+../dhtmlxCalendar/codebase/dhtmlxcalendar.css
+../dhtmlxCombo/codebase/dhtmlxcombo.css
+../dhtmlxGrid/codebase/skins/dhtmlxgrid_dhx_skyblue.css
+../dhtmlxCalendar/codebase/skins/dhtmlxcalendar_dhx_skyblue.css
