@@ -33,8 +33,8 @@ CREATE TABLE IF NOT EXISTS `bets` (
   `ticket_number` text,
   `security_code` text,
   `lucky_pick` tinyint(4) DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL,
+  `updated_at` timestamp NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
