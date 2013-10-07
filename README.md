@@ -35,4 +35,8 @@ Database:
 
 Just import the dump file.
 
+/managers/login 
+Email: testing@test.com
+Password: test
+
 Any questions, please conctact me at johndavedecano@gmail.com
