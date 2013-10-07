@@ -55,5 +55,5 @@ $app->get('/managers/winners/request/',function() use ($app){
         'total_entries' => count($data),
         'total_pages' => ceil(count($data)/25),
         'page'      => 1,
-    ),$data));
+    ),$data),JSON_NUMERIC_CHECK);
 });

@@ -16,6 +16,6 @@ $app->get('/live-draw/',function() use ($app){
     $draw = Draw::where("date","=",date("Y-m-d 00:00:00"))->where("status","=","closed")->where("numbers","!=","")->first();
     header("Content-Type:text/json");
     if(is_object($draw)){
-        echo json_encode(explode(",",$draw->numbers));
+        echo json_encode(explode(",",$draw->numbers),JSON_NUMERIC_CHECK);
     } 
 });

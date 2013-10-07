@@ -45,7 +45,7 @@ $app->get('/managers/draws/request/',function() use ($app){
         'total_entries' => count($data),
         'total_pages' => ceil(count($data)/25),
         'page'      => 1,
-    ),$data));
+    ),$data),JSON_NUMERIC_CHECK);
     
     
 });
@@ -72,7 +72,7 @@ $app->get('/managers/draws/request/latest/',function() use ($app){
         'total_entries' => count($data),
         'total_pages' => ceil(count($data)/10),
         'page'      => 1,
-    ),$data));
+    ),$data),JSON_NUMERIC_CHECK);
        
 });
 
