@@ -24,7 +24,7 @@ if(!empty($draw)){
         // SAVE THE WINNING NUMBER TO DATABASE
         $draw = Draw::where("date","=",$date)->update(array('numbers' => implode(",",$shuffled),'status' => 'closed'));
         // FIND WINNERS
-        $bets = Bet::where("draw_id","=",$draw_id)->where("winning_numbers","=",implode(",",$shuffled));
+        $bets = Bet::where("draw_id","=",$draw_id)->where("numbers","=",implode(",",$shuffled));
         // GET NUMBER OF WINNERS AND DIVIDED IT
         $price = $draw_winning_price / $bets->count();
         // WINNERS
