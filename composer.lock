@@ -10,7 +10,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cartalyst/sentry.git",
+                "url": "https://github.com/cartalyst/sentinel",
                 "reference": "1cf86553c9cf707722b8514d968345d927715e9b"
             },
             "dist": {
